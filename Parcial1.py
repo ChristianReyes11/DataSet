@@ -1,18 +1,18 @@
-import pandas as pd
 import streamlit as st
-import matplotlib.pyplot as plt
-import plotly.express as px
+import pandas as pd
+import numpy as np
+import codecs
 
-st.sidebar.image("Logo.png")
+st.sidebar.image("Logo.jpg")
+st.title('BY CHRISTIAN EDUARDO AMARO REYES - S19004895')
 
-st.title('Recomendaciones de Anime')
-st.text('BY Christian Eduardo Amaro Reyes - S19004895')
-
-
+DATE_COLUMN = 'released'
 DATA_URL = ('anime.csv')
 
 
 @st.cache
 def load_data(nrows):
-    data = pd.read_csv(DATA_URL, nrows=nrows)
+    doc = codecs.open('anime.csv', 'rU', 'latin1')
+    data = pd.read_csv(doc, nrows=nrows)
+    def lowercase(x): return str(x).lower()
     return data
